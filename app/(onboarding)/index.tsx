@@ -2,8 +2,8 @@ import React, { useMemo, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
-import { Category, Newsletter } from "../../components/types";
-import NewsletterList from "../../components/newsletter";
+import { Category, Newsletter } from "@/components/types";
+import NewsletterList from "@/components/newsletter";
 
 // ---------- Mock Data ----------
 const CATEGORIES: Category[] = [
@@ -102,7 +102,7 @@ export default function NewsletterPickScreen() {
 
   const handleSubscribe = (id: string) => {
     // 뉴스레터 상세 페이지로 이동
-    router.push(`/onboarding/${id}`);
+    router.push(`/(onboarding)/${id}` as any);
   };
 
   // ---------- Header (타이틀) ----------
@@ -136,7 +136,7 @@ export default function NewsletterPickScreen() {
       {/* 하단 CTA 바 */}
       <View className="absolute bottom-0 left-0 right-0 bg-white pt-3 pb-10 px-4">
         <TouchableOpacity
-          onPress={() => router.replace("/SignupScreen")}
+          onPress={() => router.replace("/(auth)")}
           className="bg-purple-600 rounded-2xl py-4 items-center"
           activeOpacity={0.9}
         >
@@ -144,7 +144,7 @@ export default function NewsletterPickScreen() {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => router.replace("/SignupScreen")}
+          onPress={() => router.replace("/(auth)/sign-in")}
           className="mt-3 items-center"
           activeOpacity={0.7}
         >

@@ -2,8 +2,8 @@ import React from "react";
 import { View, Text } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link, router, useLocalSearchParams } from "expo-router";
-import NewsletterDetail from "../../../components/newsletterDetail";
-import { NewsletterDetailData } from "../../../components/newsletterDetail";
+import NewsletterDetail from "@/components/newsletterDetail";
+import { NewsletterDetailData } from "@/components/newsletterDetail";
 
 const NEWSLETTER_DETAILS: Record<string, NewsletterDetailData> = {
   "1": {
@@ -66,7 +66,7 @@ export default function NewsletterDetailScreen() {
         <View className="flex-1 justify-center items-center">
           <Text className="text-gray-500">뉴스레터를 찾을 수 없습니다.</Text>
           <Link
-            href="/onboarding"
+            href="/(onboarding)"
             asChild
             className="text-blue-500 mt-4 text-center text-base font-semibold"
           >
