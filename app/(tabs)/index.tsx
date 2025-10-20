@@ -1,13 +1,6 @@
-import { Text, View } from "react-native";
-import { Link } from "expo-router";
+import { Redirect } from "expo-router";
 
-export default function TabOneScreen() {
-  return (
-    <View className="flex-1 items-center justify-center">
-      <Text className="text-xl font-bold">MailPocket</Text>
-      <Link href="/authScreen">Auth</Link>
-      <Link href="/onboardingScreen">Onboarding</Link>
-      <View className="my-8 h-px w-4/5 bg-gray-200" />
-    </View>
-  );
+// (tabs) 루트로 접근하면 자동으로 mail 탭으로 리다이렉트
+export default function TabsIndex() {
+  return <Redirect href="/(tabs)/mail" />;
 }

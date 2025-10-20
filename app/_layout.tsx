@@ -5,6 +5,7 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
+import "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import "./global.css";
 
@@ -14,8 +15,8 @@ export {
 } from "expo-router";
 
 export const unstable_settings = {
-  // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "(onboarding)",
+  // 초기 라우트는 index.tsx에서 처리
+  initialRouteName: "index",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -49,10 +50,15 @@ function RootLayoutNav() {
   return (
     <SafeAreaProvider>
       <ThemeProvider value={DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="(onboarding)" options={{ headerShown: false }} />
-          <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack screenOptions={{ headerShown: false }}>
+          {/* 초기 라우팅 체크 화면 */}
+          <Stack.Screen name="index" />
+          {/* 온보딩 */}
+          <Stack.Screen name="(onboarding)" />
+          {/* 인증 (로그인/회원가입) */}
+          <Stack.Screen name="(auth)" />
+          {/* 메인 앱 (탭 네비게이터) */}
+          <Stack.Screen name="(tabs)" />
         </Stack>
       </ThemeProvider>
     </SafeAreaProvider>

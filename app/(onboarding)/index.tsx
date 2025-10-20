@@ -2,6 +2,7 @@ import React, { useMemo, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Category, Newsletter } from "@/components/types";
 import NewsletterList from "@/components/newsletter";
 
@@ -136,7 +137,11 @@ export default function NewsletterPickScreen() {
       {/* 하단 CTA 바 */}
       <View className="absolute bottom-0 left-0 right-0 bg-white pt-3 pb-10 px-4">
         <TouchableOpacity
-          onPress={() => router.replace("/(auth)")}
+          onPress={async () => {
+            // 온보딩 완료 플래그 저장
+            await AsyncStorage.setItem("hasCompletedOnboarding", "true");
+            router.replace("/(auth)" as any);
+          }}
           className="bg-purple-600 rounded-2xl py-4 items-center"
           activeOpacity={0.9}
         >
@@ -144,7 +149,11 @@ export default function NewsletterPickScreen() {
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => router.replace("/(auth)/sign-in")}
+          onPress={async () => {
+            // 온보딩 완료 플래그 저장
+            await AsyncStorage.setItem("hasCompletedOnboarding", "true");
+            router.replace("/(auth)/sign-in" as any);
+          }}
           className="mt-3 items-center"
           activeOpacity={0.7}
         >
